@@ -1,0 +1,1929 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>贾商莹 — 个人作品集 · 油画创作与研究</title>
+<meta name="description" content="贾商莹，油画艺术家，现居上海。以上海都市空间与青年文化为主题，探索数字图像与海派油画融合的当代创作。作品曾入选上海油画双年展、上海美术大展、佛罗伦萨双年展等29余次重要展览。">
+<meta property="og:title" content="贾商莹 — 个人作品集">
+<meta property="og:description" content="都市与身份：数字图像与青年文化融合下的海派油画创作">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_CN">
+
+<!-- Preload critical fonts -->
+<link rel="preload" as="font" href="https://fonts.gstatic.com/s/notoserifsc/v31/H4clBXePl9DZ0Xe7gG9cyOj7mm63SzZBEtERe7Y.otf" crossorigin>
+<link rel="preload" as="font" href="https://fonts.gstatic.com/s/notosanssc/v37/k3kCo84MPvpLmixcA63oeAL7Iqp5IZJF9bmaG9_EnYxNbPzS5HE.otf" crossorigin>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+/* ===========================================
+   CSS CUSTOM PROPERTIES
+   =========================================== */
+:root {
+    --paper: #E9E5DB;
+    --paper-deep: #DCD6C4;
+    --paper-dark: #C8C3B3;
+    --bud: #9BBF4A;
+    --bud-soft: #D2E8A0;
+    --bud-haze: #B2CE7A;
+    --bud-deep: #7A9A30;
+    --ink: #1B2566;
+    --ink-light: rgba(27, 37, 102, 0.6);
+    --ink-faint: rgba(27, 37, 102, 0.12);
+    --ember: #E2886A;
+
+    --font-display: 'Noto Serif SC', 'Source Han Serif SC', serif;
+    --font-body: 'Noto Sans SC', 'Source Han Sans SC', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    --max-width: 1400px;
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ===========================================
+   RESET & BASE
+   =========================================== */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; scrollbar-width: thin; scrollbar-color: var(--ink-faint) var(--paper); }
+body {
+    font-family: var(--font-body);
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--paper); }
+::-webkit-scrollbar-thumb { background: var(--ink-faint); border-radius: 3px; }
+
+/* ===========================================
+   NAVIGATION BAR
+   =========================================== */
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 16px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+.nav.scrolled {
+    background: rgba(233, 229, 219, 0.92);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: 0 1px 0 var(--ink-faint);
+}
+.nav-logo {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+.nav-links a {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-light);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.3s;
+    position: relative;
+}
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--bud-deep);
+    transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a:hover::after { width: 100%; }
+.nav-toggle {
+    display: none;
+    background: none; border: none;
+    font-size: 24px; cursor: pointer;
+    color: var(--ink);
+}
+
+/* ===========================================
+   HERO SECTION
+   =========================================== */
+.hero {
+    min-height: 100vh;
+    min-height: 100dvh; /* Safari mobile fix */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 120px 40px 80px;
+}
+.hero-bloom {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+.hero-bloom-1 {
+    width: 1100px; height: 900px;
+    right: -150px; top: -100px;
+    background: radial-gradient(ellipse at center, rgba(155,191,74,0.45) 0%, rgba(155,191,74,0.18) 35%, rgba(178,206,122,0.07) 60%, rgba(233,229,219,0) 78%);
+    animation: heroBloomPulse 12s ease-in-out infinite;
+}
+.hero-bloom-2 {
+    width: 500px; height: 420px;
+    left: 60px; bottom: 100px;
+    background: radial-gradient(ellipse at center, rgba(210,232,160,0.30) 0%, rgba(233,229,219,0) 70%);
+    animation: heroBloomPulse 14s 4s ease-in-out infinite;
+}
+.hero-bloom-3 {
+    width: 350px; height: 280px;
+    right: 250px; bottom: 180px;
+    background: radial-gradient(ellipse at center, rgba(226,136,106,0.12) 0%, rgba(233,229,219,0) 70%);
+    animation: heroBloomPulse 10s 2s ease-in-out infinite;
+}
+@keyframes heroBloomPulse {
+    0%, 100% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.08); }
+}
+
+/* Hero artwork: 繁花 */
+.hero-artwork {
+    position: absolute;
+    right: 60px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    opacity: 0;
+    animation: heroArtReveal 1.2s 0.3s ease-out forwards;
+}
+.hero-artwork-img {
+    width: 520px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 32px rgba(27, 37, 102, 0.18));
+    position: relative;
+    z-index: 2;
+}
+.hero-artwork-frame {
+    position: absolute;
+    left: -16px;
+    top: -16px;
+    right: -16px;
+    bottom: -16px;
+    border: 1px solid rgba(27, 37, 102, 0.15);
+    z-index: 1;
+}
+@keyframes heroArtReveal {
+    from { opacity: 0; transform: translateY(-50%) translateX(40px); }
+    to { opacity: 1; transform: translateY(-50%) translateX(0); }
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: left;
+    max-width: 700px;
+    margin-right: auto;
+    padding-right: 100px;
+}
+.hero-tag {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: var(--ember);
+    margin-bottom: 32px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.1s ease-out forwards;
+}
+.hero-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(56px, 8vw, 120px);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    margin-bottom: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.2s ease-out forwards;
+}
+.hero-subtitle {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: clamp(22px, 2.5vw, 36px);
+    line-height: 1.3;
+    color: var(--ink);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.35s ease-out forwards;
+}
+.hero-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 32px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--ink-light);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.5s ease-out forwards;
+}
+.hero-meta-sep { color: var(--ember); }
+.hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 700;
+    color: var(--ink);
+    margin-top: 28px;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s 0.6s ease-out forwards;
+}
+.hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    opacity: 0;
+    animation: fadeUp 1s 1s ease-out forwards;
+}
+.hero-scroll-arrow {
+    width: 20px; height: 32px;
+    border: 2px solid var(--ink-light);
+    border-radius: 12px;
+    position: relative;
+}
+.hero-scroll-arrow::after {
+    content: '';
+    position: absolute;
+    top: 6px; left: 50%;
+    transform: translateX(-50%);
+    width: 3px; height: 8px;
+    background: var(--ink-light);
+    border-radius: 2px;
+    animation: scrollDot 2s ease-in-out infinite;
+}
+@keyframes scrollDot {
+    0%, 100% { top: 6px; opacity: 0.4; }
+    50% { top: 16px; opacity: 1; }
+}
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================================
+   SECTION COMMONS
+   =========================================== */
+.section {
+    padding: 100px 40px;
+    position: relative;
+}
+.section-alt { background: var(--paper-deep); }
+.section-bud { background: rgba(155,191,74,0.06); }
+.section-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+.section-label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.22em;
+    color: var(--ember);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+.section-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(36px, 5vw, 64px);
+    line-height: 1.12;
+    margin-bottom: 16px;
+    color: var(--ink);
+}
+.section-lede {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: clamp(17px, 1.8vw, 21px);
+    line-height: 1.6;
+    color: var(--ink-light);
+    max-width: 700px;
+    margin-bottom: 48px;
+}
+
+/* Divider */
+.divider {
+    width: 60px; height: 1px;
+    background: var(--ink-faint);
+    margin: 20px 0 40px;
+}
+
+/* ===========================================
+   REVEAL ON SCROLL
+   =========================================== */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s var(--ease-out-expo),
+                transform 0.8s var(--ease-out-expo);
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ===========================================
+   TABLE OF CONTENTS
+   =========================================== */
+.toc-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    background: var(--ink-faint);
+    border: 1px solid var(--ink-faint);
+}
+.toc-card {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 28px 36px;
+    background: var(--paper);
+    text-decoration: none;
+    transition: background 0.3s ease, padding-left 0.3s ease;
+    cursor: pointer;
+}
+.toc-card:hover {
+    background: rgba(155,191,74,0.06);
+    padding-left: 48px;
+}
+.toc-num {
+    font-family: var(--font-display);
+    font-size: 32px;
+    color: var(--bud);
+    min-width: 56px;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+}
+.toc-card:hover .toc-num { opacity: 1; }
+.toc-info { flex: 1; }
+.toc-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--ink);
+    margin-bottom: 4px;
+}
+.toc-desc {
+    font-size: 14px;
+    color: var(--ink-light);
+}
+.toc-arrow {
+    font-size: 24px;
+    color: var(--bud);
+    opacity: 0;
+    transform: translateX(-8px);
+    transition: opacity 0.3s, transform 0.3s;
+}
+.toc-card:hover .toc-arrow {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===========================================
+   ABOUT / BIO
+   =========================================== */
+.about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.about-text p {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.75;
+    margin-bottom: 18px;
+    color: var(--ink);
+}
+.about-visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.about-frame {
+    width: 100%;
+    aspect-ratio: 3/4;
+    max-height: 500px;
+    border: 1px solid var(--ink-faint);
+    position: relative;
+    background: rgba(155,191,74,0.04);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+.about-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.about-frame-accent {
+    position: absolute;
+    right: -12px; bottom: -12px;
+    width: 120px; height: 80px;
+    background: var(--bud);
+    opacity: 0.5;
+    z-index: -1;
+}
+.about-frame-accent-top {
+    position: absolute;
+    left: -12px; top: -12px;
+    width: 80px; height: 120px;
+    background: var(--ember);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+/* Artist Statement Blockquote */
+.artist-statement {
+    margin: 28px 0 32px;
+    padding: 28px 32px;
+    border-left: 3px solid var(--bud);
+    background: rgba(155,191,74,0.05);
+    quotes: none;
+}
+.artist-statement p {
+    font-family: var(--font-display);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--ink);
+    margin-bottom: 12px;
+    font-style: italic;
+}
+.artist-statement p:last-child { margin-bottom: 0; }
+
+/* ===========================================
+   AWARDS — Horizontal Cards
+   =========================================== */
+.awards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+    gap: 20px;
+}
+.award-card {
+    padding: 28px 32px;
+    border: 1px solid var(--ink-faint);
+    background: rgba(233, 229, 219, 0.6);
+    transition: border-color 0.3s, transform 0.3s;
+}
+.award-card:hover {
+    border-color: var(--bud);
+    transform: translateY(-2px);
+}
+.award-year {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ember);
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+}
+.award-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.3;
+}
+
+/* ===========================================
+   PUBLICATIONS
+   =========================================== */
+.pub-card {
+    padding: 32px 36px;
+    border-top: 1px solid var(--ink-faint);
+    display: flex;
+    gap: 32px;
+    align-items: baseline;
+    transition: background 0.3s;
+}
+.pub-card:hover { background: rgba(155,191,74,0.04); }
+.pub-card:last-child { border-bottom: 1px solid var(--ink-faint); }
+.pub-num {
+    font-family: var(--font-display);
+    font-size: 28px;
+    color: var(--ink);
+    min-width: 48px;
+}
+.pub-info h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.pub-info .pub-journal {
+    font-size: 15px;
+    color: var(--ink-light);
+}
+
+/* ===========================================
+   EXHIBITION TIMELINE
+   =========================================== */
+.timeline {
+    position: relative;
+    padding-left: 40px;
+}
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px; top: 0; bottom: 0;
+    width: 1px;
+    background: var(--ink-faint);
+}
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 40px;
+}
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -29px; top: 8px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bud);
+    border: 2px solid var(--paper);
+}
+.timeline-year {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--ember);
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+}
+.timeline-title {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--ink);
+}
+.timeline-detail {
+    font-size: 15px;
+    color: var(--ink-light);
+}
+.timeline-highlight {
+    color: var(--bud-deep);
+    font-weight: 500;
+}
+
+/* ===========================================
+   PROGRESS BAR
+   =========================================== */
+.progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    background: var(--bud);
+    z-index: 9999;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* ===========================================
+   BACK TO TOP
+   =========================================== */
+.back-to-top {
+    position: fixed;
+    right: 28px;
+    bottom: 32px;
+    z-index: 9998;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--paper);
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s;
+}
+.back-to-top.visible {
+    opacity: 0.85;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+.back-to-top:hover {
+    opacity: 1;
+    background: var(--bud-deep);
+}
+
+/* ===========================================
+   GALLERY FILTER TABS
+   =========================================== */
+.filter-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+}
+.filter-tab {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px 22px;
+    border: 1px solid var(--ink-faint);
+    background: transparent;
+    color: var(--ink-light);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    letter-spacing: 0.04em;
+}
+.filter-tab:hover {
+    border-color: var(--bud);
+    color: var(--ink);
+}
+.filter-tab.active {
+    background: var(--bud);
+    border-color: var(--bud);
+    color: var(--ink);
+    font-weight: 700;
+}
+.gallery-card.hidden, .study-card.hidden {
+    display: none;
+}
+
+/* ===========================================
+   EXHIBITION PHOTOS (expandable)
+   =========================================== */
+.timeline-item {
+    cursor: pointer;
+}
+.timeline-item::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-family: var(--font-mono);
+    font-size: 18px;
+    color: var(--ink-light);
+    opacity: 0.4;
+    transition: transform 0.3s ease;
+}
+.timeline-item.expanded::after {
+    content: '−';
+    opacity: 0.7;
+}
+.timeline-photos {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s var(--ease-out-expo), margin 0.4s ease, opacity 0.4s ease;
+    opacity: 0;
+    margin-top: 0;
+}
+.timeline-item.expanded .timeline-photos {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: 16px;
+}
+.timeline-photos img {
+    max-height: 260px;
+    object-fit: contain;
+    border: 1px solid var(--ink-faint);
+    margin-right: 12px;
+    margin-bottom: 8px;
+}
+
+/* ===========================================
+   UNIFIED GALLERY (oil + sketch merged)
+   =========================================== */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+.gallery-card, .study-card {
+    position: relative;
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: pointer;
+    border: 1px solid var(--ink-faint);
+    background: rgba(233, 229, 219, 0.7);
+}
+.gallery-card img, .study-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    transition: transform 0.6s var(--ease-out-expo);
+}
+
+/* ===========================================
+   RESET — remove standalone study grid
+   =========================================== */
+.study-grid { display: contents; }
+
+/* Gallery card overlays (hover info) */
+.gallery-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(27,37,102,0.75) 0%, rgba(27,37,102,0.1) 50%, transparent 100%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 24px;
+    pointer-events: none;
+}
+.gallery-card:hover .gallery-card-overlay { opacity: 1; }
+.gallery-card-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: #fff;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.gallery-card-meta {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.04em;
+}
+
+/* Study card labels */
+.study-card-label {
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: #fff;
+    background: rgba(27,37,102,0.8);
+    padding: 6px 10px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.study-card:hover .study-card-label { opacity: 1; }
+
+/* ===========================================
+   RESEARCH CARDS
+   =========================================== */
+.research-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.research-card {
+    padding: 32px;
+    border: 1px solid var(--ink-faint);
+    background: rgba(233, 229, 219, 0.5);
+    transition: border-color 0.3s;
+}
+.research-card:hover { border-color: var(--bud); }
+.research-card-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    color: var(--bud);
+    line-height: 1;
+    margin-bottom: 16px;
+    opacity: 0.6;
+}
+.research-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+.research-card p {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.6;
+}
+
+/* ===========================================
+   OUTCOMES — Two Column
+   =========================================== */
+.outcomes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+.outcomes-col h3 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.outcomes-tag {
+    display: inline-block;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    padding: 6px 16px;
+    background: var(--bud);
+    color: var(--ink);
+    margin-bottom: 20px;
+}
+.outcome-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--ink-faint);
+}
+.outcome-item:last-child { border-bottom: none; }
+.outcome-item h4 {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.outcome-item p {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.6;
+}
+
+/* ===========================================
+   ARTIST CASE STUDY CARDS
+   =========================================== */
+.case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.case-card {
+    border: 1px solid var(--ink-faint);
+    background: rgba(233, 229, 219, 0.5);
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+}
+.case-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--bud);
+}
+.case-card-body {
+    padding: 24px;
+}
+.case-card h3 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+.case-card p {
+    font-size: 14px;
+    color: var(--ink-light);
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+.case-card .case-tag {
+    display: inline-block;
+    font-size: 12px;
+    padding: 4px 10px;
+    background: rgba(155,191,74,0.15);
+    color: var(--bud-deep);
+    font-weight: 500;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
+/* ===========================================
+   FOOTER
+   =========================================== */
+.footer {
+    padding: 80px 40px;
+    text-align: center;
+    background: var(--paper-deep);
+    position: relative;
+}
+.footer-bloom {
+    position: absolute;
+    width: 600px; height: 500px;
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(155,191,74,0.20) 0%, rgba(220,214,196,0) 70%);
+    pointer-events: none;
+}
+.footer h2 {
+    font-family: var(--font-display);
+    font-size: clamp(48px, 7vw, 96px);
+    font-weight: 700;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+}
+.footer p {
+    font-size: 18px;
+    color: var(--ink-light);
+    position: relative;
+    z-index: 1;
+}
+.footer-mono {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-light);
+    opacity: 0.5;
+    margin-top: 24px;
+    position: relative;
+    z-index: 1;
+}
+.footer-contact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    position: relative;
+    z-index: 1;
+    margin-top: 24px;
+}
+.contact-item {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding: 12px 24px;
+}
+.contact-label {
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--ember);
+    text-transform: uppercase;
+}
+.contact-value {
+    font-family: var(--font-mono);
+    font-size: 16px;
+    color: var(--ink);
+    letter-spacing: 0.02em;
+}
+.contact-divider {
+    width: 1px;
+    height: 24px;
+    background: var(--ink-faint);
+}
+
+/* ===========================================
+   LIGHTBOX
+   =========================================== */
+.lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(245, 244, 241, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+}
+.lightbox.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.lightbox-close {
+    position: absolute;
+    top: 24px; right: 32px;
+    background: none; border: none;
+    font-size: 32px; color: var(--ink);
+    cursor: pointer;
+    z-index: 10;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+.lightbox-close:hover { opacity: 1; }
+.lightbox-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none; border: none;
+    font-size: 48px; color: var(--ink);
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+    z-index: 10;
+    padding: 20px;
+}
+.lightbox-nav:hover { opacity: 0.8; }
+.lightbox-prev { left: 16px; }
+.lightbox-next { right: 16px; }
+.lightbox-content {
+    max-width: 85vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+.lightbox-content img {
+    max-width: 85vw;
+    max-height: 68vh;
+    object-fit: contain;
+    box-shadow: 0 2px 24px rgba(0,0,0,0.10);
+}
+.lightbox-info {
+    text-align: center;
+    color: var(--ink);
+}
+.lightbox-info .lb-title {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+.lightbox-info .lb-meta {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--ink-light);
+    letter-spacing: 0.04em;
+}
+.lightbox-counter {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-light);
+    opacity: 0.5;
+    letter-spacing: 0.08em;
+}
+
+/* ===========================================
+   RESPONSIVE
+   =========================================== */
+@media (max-width: 1024px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+    .study-grid { grid-template-columns: repeat(2, 1fr); }
+    .research-grid { grid-template-columns: 1fr; }
+    .case-grid { grid-template-columns: 1fr; }
+    .outcomes-grid { grid-template-columns: 1fr; }
+    .awards-grid { grid-template-columns: 1fr; }
+    .hero-artwork { right: -40px; }
+    .hero-artwork-img { width: 380px; }
+    .hero-content { max-width: 520px; }
+}
+@media (max-width: 768px) {
+    .section { padding: 60px 20px; }
+    .hero { padding: 100px 20px 60px; }
+    .nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: rgba(233, 229, 219, 0.96);
+        backdrop-filter: blur(16px);
+        padding: 20px;
+        gap: 16px;
+        border-bottom: 1px solid var(--ink-faint);
+    }
+    .nav-toggle { display: block; }
+    .gallery-grid { grid-template-columns: 1fr; }
+    .study-grid { grid-template-columns: repeat(2, 1fr); }
+    .lightbox-nav { font-size: 32px; }
+    .hero-artwork { display: none; }
+    .hero-content { text-align: center; max-width: 100%; padding-right: 0; }
+    .footer-contact { flex-direction: column; gap: 8px; }
+    .contact-divider { width: 40px; height: 1px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.2s !important;
+    }
+}
+</style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Back to Top -->
+<button class="back-to-top" id="backToTop" aria-label="回到顶部" title="回到顶部">↑</button>
+
+<!-- ================================================================
+     NAVIGATION
+     ================================================================ -->
+<nav class="nav" id="nav">
+    <a href="#" class="nav-logo">贾商莹</a>
+    <button class="nav-toggle" id="navToggle" aria-label="菜单">☰</button>
+    <ul class="nav-links" id="navLinks">
+        <li><a href="#toc">目录</a></li>
+        <li><a href="#about">关于</a></li>
+        <li><a href="#exhibitions">展览</a></li>
+        <li><a href="#gallery">作品</a></li>
+        <li><a href="#research">研究</a></li>
+    </ul>
+</nav>
+
+<!-- ================================================================
+     HERO
+     ================================================================ -->
+<section class="hero" id="hero">
+    <!-- Atmospheric blooms -->
+    <div class="hero-bloom hero-bloom-1"></div>
+    <div class="hero-bloom hero-bloom-2"></div>
+
+    <!-- Artwork visual: 繁花 -->
+    <div class="hero-artwork">
+        <img src="assets/slide21_img1.png" alt="繁花" class="hero-artwork-img">
+        <div class="hero-artwork-frame"></div>
+    </div>
+
+    <div class="hero-content">
+        <div class="hero-tag">油画艺术 · 个人作品集</div>
+        <h1 class="hero-title">都市与身份</h1>
+        <p class="hero-subtitle">数字图像与青年文化融合下的海派油画创作</p>
+        <div class="hero-meta">
+            <span>油画创作与研究</span>
+        </div>
+        <div class="hero-name">贾商莹</div>
+    </div>
+
+    <div class="hero-scroll">
+        <div class="hero-scroll-arrow"></div>
+    </div>
+</section>
+
+<!-- ================================================================
+     TABLE OF CONTENTS
+     ================================================================ -->
+<section class="section" id="toc">
+    <div class="section-container" style="max-width:1000px;">
+        <span class="section-label reveal">目录</span>
+        <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(32px, 4.5vw, 56px);">浏览作品集</h2>
+        <div class="divider reveal reveal-delay-1"></div>
+
+        <div class="toc-grid">
+            <a href="#about" class="toc-card reveal reveal-delay-1">
+                <div class="toc-num">01</div>
+                <div class="toc-info">
+                    <div class="toc-title">关于我</div>
+                    <div class="toc-desc">个人简介 · 教育背景 · 艺术历程</div>
+                </div>
+                <div class="toc-arrow">→</div>
+            </a>
+            <a href="#awards" class="toc-card reveal reveal-delay-2">
+                <div class="toc-num">02</div>
+                <div class="toc-info">
+                    <div class="toc-title">获奖与学术</div>
+                    <div class="toc-desc">荣誉奖项 · 论文发表</div>
+                </div>
+                <div class="toc-arrow">→</div>
+            </a>
+            <a href="#exhibitions" class="toc-card reveal reveal-delay-2">
+                <div class="toc-num">03</div>
+                <div class="toc-info">
+                    <div class="toc-title">参展经历</div>
+                    <div class="toc-desc">29+ 场国家级、省级美术展览</div>
+                </div>
+                <div class="toc-arrow">→</div>
+            </a>
+            <a href="#gallery" class="toc-card reveal reveal-delay-3">
+                <div class="toc-num">04</div>
+                <div class="toc-info">
+                    <div class="toc-title">作品画廊</div>
+                    <div class="toc-desc">油画创作 · 素描 · 写生 — 可分类筛选</div>
+                </div>
+                <div class="toc-arrow">→</div>
+            </a>
+            <a href="#research" class="toc-card reveal reveal-delay-4">
+                <div class="toc-num">06</div>
+                <div class="toc-info">
+                    <div class="toc-title">研究方向</div>
+                    <div class="toc-desc">创作理念 · 案例研究 · 实践路径</div>
+                </div>
+                <div class="toc-arrow">→</div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     ABOUT
+     ================================================================ -->
+<section class="section" id="about">
+    <div class="section-container">
+        <div class="about-grid">
+            <div class="about-text">
+                <span class="section-label reveal">关于</span>
+                <h2 class="section-title reveal reveal-delay-1">个人简介</h2>
+                <div class="divider reveal reveal-delay-2"></div>
+                <p class="reveal reveal-delay-2">2001年生于黑龙江哈尔滨，现居上海。2022年毕业于哈尔滨师范大学美术学院油画系（本科），同年保送上海大学美术学院油画系攻读硕士研究生，师从潘文艳教授。</p>
+
+                <!-- Artist Statement -->
+                <blockquote class="artist-statement reveal reveal-delay-3">
+                    <p>我画海派，不是在画一座城市的外壳，而是在画它流动的体温。</p>
+                    <p>上海的弄堂光影、西岸的午夜霓虹、青年身上那种既渴望归属又追逐自由的张力——这些无法被手机镜头定影的颤动，正是我拿起画笔的理由。海派文化的魂魄从来不是某种固定的风格，而是一种向一切新鲜事物敞开怀抱的包容力。我试图让油画这种古老的媒介，在数字图像的碎片洪流中重新获得凝视的重量。</p>
+                </blockquote>
+
+                <p class="reveal reveal-delay-4">主要研究方向为当代都市视觉经验的油画翻译与身份建构。以上海为核心场域，关注快速城市化进程中个体的身份认同与情感归属问题，探索数字图像与青年文化融合语境下的海派油画创作。</p>
+                <p class="reveal reveal-delay-5">曾获国家艺术基金艺术人才项目培训、曾成钢奖学金特别奖、研究生国家奖学金、上海大学一等奖学金等荣誉，累计入选全国性及省级以上美术展览29余次。</p>
+            </div>
+            <div class="about-visual reveal reveal-delay-2">
+                <div class="about-frame">
+                    <div class="about-frame-accent"></div>
+                    <div class="about-frame-accent-top"></div>
+                    <img src="assets/slide4_img4.jpg" alt="贾商莹" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     AWARDS
+     ================================================================ -->
+<section class="section section-bud" id="awards">
+    <div class="section-container">
+        <span class="section-label reveal">荣誉</span>
+        <h2 class="section-title reveal reveal-delay-1">获奖情况</h2>
+        <div class="divider reveal reveal-delay-1"></div>
+        <div class="awards-grid">
+            <div class="award-card reveal reveal-delay-1">
+                <div class="award-year">2025</div>
+                <div class="award-title">研究生国家奖学金</div>
+            </div>
+            <div class="award-card reveal reveal-delay-2">
+                <div class="award-year">2025</div>
+                <div class="award-title">上海大学优秀毕业生荣誉称号</div>
+            </div>
+            <div class="award-card reveal reveal-delay-2">
+                <div class="award-year">2025</div>
+                <div class="award-title">曾成钢奖学金特别奖</div>
+            </div>
+            <div class="award-card reveal reveal-delay-3">
+                <div class="award-year">2025</div>
+                <div class="award-title">国家艺术基金"薪火传承"红色主题油画创作人才培训项目正式学员</div>
+            </div>
+            <div class="award-card reveal reveal-delay-3">
+                <div class="award-year">2022</div>
+                <div class="award-title">哈尔滨师范大学优秀毕业生荣誉称号</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     PUBLICATIONS
+     ================================================================ -->
+<section class="section">
+    <div class="section-container">
+        <span class="section-label reveal">学术</span>
+        <h2 class="section-title reveal reveal-delay-1">论文发表</h2>
+        <div class="divider reveal reveal-delay-1"></div>
+        <div class="reveal reveal-delay-2">
+            <div class="pub-card">
+                <div class="pub-num">01</div>
+                <div class="pub-info">
+                    <h3>《空间压缩与符号重构：都市油画新阐释》</h3>
+                    <p class="pub-journal">发表于《艺术市场》2025年7月号</p>
+                </div>
+            </div>
+            <div class="pub-card">
+                <div class="pub-num">02</div>
+                <div class="pub-info">
+                    <h3>《全民艺术：人工智能对公共艺术可及性的影响》</h3>
+                    <p class="pub-journal">发表于《公共艺术》2023年第3期</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     EXHIBITIONS TIMELINE
+     ================================================================ -->
+<section class="section section-alt" id="exhibitions">
+    <div class="section-container">
+        <span class="section-label reveal">参展</span>
+        <h2 class="section-title reveal reveal-delay-1">参展经历</h2>
+        <p class="section-lede reveal reveal-delay-1">累计入选国家级、省级等重要美术展览 <strong>29次</strong>以上</p>
+
+        <div class="timeline">
+            <div class="timeline-item reveal reveal-delay-1" data-exhibition-photos="assets/slide10_img2.jpg">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-title">上海美术大展</div>
+                <div class="timeline-detail">入选</div>
+                <div class="timeline-photos"><img src="assets/slide10_img2.jpg" alt="上海美术大展" loading="lazy"></div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-1" data-exhibition-photos="assets/slide11_img2.jpg">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-title">江南如画 — 中国油画作品展</div>
+                <div class="timeline-detail">入选</div>
+                <div class="timeline-photos"><img src="assets/slide11_img2.jpg" alt="江南如画" loading="lazy"></div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-2" data-exhibition-photos="assets/slide12_img2.jpg">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-title">上海当代青年油画雕塑推荐展</div>
+                <div class="timeline-detail">入选</div>
+                <div class="timeline-photos"><img src="assets/slide12_img2.jpg" alt="上海当代青年油画雕塑推荐展" loading="lazy"></div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-2" data-exhibition-photos="assets/slide13_img3.jpg">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-title">佛罗伦萨双年展</div>
+                <div class="timeline-detail">入选</div>
+                <div class="timeline-photos"><img src="assets/slide13_img3.jpg" alt="佛罗伦萨双年展" loading="lazy"></div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-2" data-exhibition-photos="assets/slide16_img2.jpg">
+                <div class="timeline-year">2025</div>
+                <div class="timeline-title">罗中立奖学金展览</div>
+                <div class="timeline-detail"><span class="timeline-highlight">入围奖</span></div>
+                <div class="timeline-photos"><img src="assets/slide16_img2.jpg" alt="罗中立奖学金展览" loading="lazy"></div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-3" data-exhibition-photos="assets/slide9_img2.jpg">
+                <div class="timeline-year">2024</div>
+                <div class="timeline-title">上海油画双年展</div>
+                <div class="timeline-detail">第二次入选</div>
+                <div class="timeline-photos"><img src="assets/slide9_img2.jpg" alt="上海油画双年展 2024" loading="lazy"></div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-3" data-exhibition-photos="assets/slide15_img2.jpg">
+                <div class="timeline-year">2023</div>
+                <div class="timeline-title">黑龙江省第五届油画作品双年展</div>
+                <div class="timeline-detail"><span class="timeline-highlight">银奖</span></div>
+                <div class="timeline-photos"><img src="assets/slide15_img2.jpg" alt="黑龙江油画双年展" loading="lazy"></div>
+            </div>
+            <div class="timeline-item reveal reveal-delay-3" data-exhibition-photos="assets/slide9_img3.jpg">
+                <div class="timeline-year">2022</div>
+                <div class="timeline-title">上海油画双年展</div>
+                <div class="timeline-detail">首次入选</div>
+                <div class="timeline-photos"><img src="assets/slide9_img3.jpg" alt="上海油画双年展 2022" loading="lazy"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     UNIFIED GALLERY — Oil Paintings + Sketches + Studies
+     ================================================================ -->
+<section class="section" id="gallery">
+    <div class="section-container">
+        <span class="section-label reveal">作品集</span>
+        <h2 class="section-title reveal reveal-delay-1">作品画廊</h2>
+        <p class="section-lede reveal reveal-delay-1">以都市空间与青年生活为主题，探索海派油画在数字时代的视觉语言</p>
+
+        <!-- Filter Tabs -->
+        <div class="filter-tabs reveal reveal-delay-1">
+            <button class="filter-tab active" data-filter="all">全部</button>
+            <button class="filter-tab" data-filter="油画">油画创作</button>
+            <button class="filter-tab" data-filter="素描">素描</button>
+            <button class="filter-tab" data-filter="写生">写生</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- === OIL PAINTINGS === -->
+            <div class="gallery-card featured reveal reveal-delay-1" data-category="油画"
+                 data-full="assets/slide20_img1.png"
+                 data-title="丘山商店"
+                 data-meta="160cm × 160cm · 布面油画 · 2022"
+                 data-desc="入选上海油画双年展 · 上海当代青年油画雕塑推荐展 · 江南如画中国油画作品展 · 罗中立奖学金入围奖">
+                <img src="assets/slide20_img1.png" alt="丘山商店" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-title">丘山商店</div>
+                    <div class="gallery-card-meta">160cm × 160cm · 布面油画 · 2022</div>
+                </div>
+            </div>
+            <div class="gallery-card reveal reveal-delay-1" data-category="油画"
+                 data-full="assets/slide21_img1.png"
+                 data-title="繁花"
+                 data-meta="200cm × 160cm · 布面油画 · 2024"
+                 data-desc="入选上海油画双年展 · 多彩全国女美术家油画展 · 上海市民艺术大展优秀奖 · 罗中立奖学金入围奖">
+                <img src="assets/slide21_img1.png" alt="繁花" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-title">繁花</div>
+                    <div class="gallery-card-meta">200cm × 160cm · 2024</div>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal reveal-delay-2" data-category="油画"
+                 data-full="assets/slide22_img1.png"
+                 data-title="小芳庭"
+                 data-meta="190cm × 190cm · 布面油画 · 2023"
+                 data-desc="入选美国油画肖像协会展 · 千里之行全国美术学院优秀作品展 · 浪潮青年全国高等院校艺术作品展">
+                <img src="assets/slide22_img1.png" alt="小芳庭" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-title">小芳庭</div>
+                    <div class="gallery-card-meta">190cm × 190cm · 2023</div>
+                </div>
+            </div>
+            <div class="gallery-card reveal reveal-delay-2" data-category="油画"
+                 data-full="assets/slide23_img7.jpg"
+                 data-title="人潮人海中有你有我"
+                 data-meta="200cm × 160cm · 布面油画 · 2025">
+                <img src="assets/slide23_img7.jpg" alt="人潮人海中有你有我" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-title">人潮人海中 有你 有我</div>
+                    <div class="gallery-card-meta">200cm × 160cm · 2025</div>
+                </div>
+            </div>
+            <div class="gallery-card reveal reveal-delay-2" data-category="油画"
+                 data-full="assets/slide24_img3.jpg"
+                 data-title="沪上芳庭"
+                 data-meta="200cm × 160cm · 布面油画 · 2025"
+                 data-desc="入选上海美术大展">
+                <img src="assets/slide24_img3.jpg" alt="沪上芳庭" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-title">沪上芳庭</div>
+                    <div class="gallery-card-meta">200cm × 160cm · 2025</div>
+                </div>
+            </div>
+
+            <div class="gallery-card reveal reveal-delay-3" data-category="油画"
+                 data-full="assets/slide25_img1.jpg"
+                 data-title="八月湖水平"
+                 data-meta="200cm × 160cm · 布面油画 · 2024"
+                 data-desc="入选黑龙江省女美术家画展铜奖 · 罗中立奖学金入围奖 · 日本京都国际艺术展优秀奖 · 香港当代艺术展优秀奖">
+                <img src="assets/slide25_img1.jpg" alt="八月湖水平" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-title">八月湖水平</div>
+                    <div class="gallery-card-meta">200cm × 160cm · 2024</div>
+                </div>
+            </div>
+            <div class="gallery-card reveal reveal-delay-3" data-category="油画"
+                 data-full="assets/slide26_img1.png"
+                 data-title="鹿鱼咖啡馆"
+                 data-meta="160cm × 160cm · 布面油画 · 2022">
+                <img src="assets/slide26_img1.png" alt="鹿鱼咖啡馆" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-title">鹿鱼咖啡馆</div>
+                    <div class="gallery-card-meta">160cm × 160cm · 2022</div>
+                </div>
+            </div>
+            <div class="gallery-card reveal reveal-delay-3" data-category="油画"
+                 data-full="assets/slide27_img1.png"
+                 data-title="苏州河"
+                 data-meta="200cm × 130cm · 布面油画 · 2023">
+                <img src="assets/slide27_img1.png" alt="苏州河" loading="lazy">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-title">苏州河</div>
+                    <div class="gallery-card-meta">200cm × 130cm · 2023</div>
+                </div>
+            </div>
+
+            <!-- === SKETCHES === -->
+            <div class="study-card reveal reveal-delay-4" data-category="素描"
+                 data-full="assets/slide29_img1.png"
+                 data-title="循环"
+                 data-meta="230cm × 180cm · 素描 · 2022">
+                <img src="assets/slide29_img1.png" alt="循环" loading="lazy">
+                <div class="study-card-label">循环 · 230×180cm</div>
+            </div>
+            <div class="study-card reveal reveal-delay-4" data-category="素描"
+                 data-full="assets/slide30_img1.png"
+                 data-title="躺姿女中年"
+                 data-meta="100cm × 80cm · 素描">
+                <img src="assets/slide30_img1.png" alt="躺姿女中年" loading="lazy">
+                <div class="study-card-label">躺姿女中年 · 100×80cm</div>
+            </div>
+            <div class="study-card reveal reveal-delay-4" data-category="素描"
+                 data-full="assets/slide30_img2.png"
+                 data-title="站姿女中年"
+                 data-meta="100cm × 80cm · 素描">
+                <img src="assets/slide30_img2.png" alt="站姿女中年" loading="lazy">
+                <div class="study-card-label">站姿女中年 · 100×80cm</div>
+            </div>
+
+            <!-- === OIL SKETCHES / 写生 === -->
+            <div class="study-card reveal reveal-delay-5" data-category="写生"
+                 data-full="assets/slide31_img1.png"
+                 data-title="男青年写生"
+                 data-meta="100cm × 160cm · 布面油画 · 2025">
+                <img src="assets/slide31_img1.png" alt="男青年写生" loading="lazy">
+                <div class="study-card-label">男青年写生 · 100×160cm</div>
+            </div>
+            <div class="study-card reveal reveal-delay-5" data-category="写生"
+                 data-full="assets/slide32_img2.jpg"
+                 data-title="女青年写生"
+                 data-meta="100cm × 150cm · 布面油画 · 2025">
+                <img src="assets/slide32_img2.jpg" alt="女青年写生" loading="lazy">
+                <div class="study-card-label">女青年写生 · 100×150cm</div>
+            </div>
+            <div class="study-card reveal reveal-delay-5" data-category="写生"
+                 data-full="assets/slide33_img3.jpg"
+                 data-title="男青年写生"
+                 data-meta="100cm × 80cm · 布面油画 · 2025">
+                <img src="assets/slide33_img3.jpg" alt="男青年写生" loading="lazy">
+                <div class="study-card-label">男青年写生 · 100×80cm</div>
+            </div>
+            <div class="study-card reveal reveal-delay-5" data-category="写生"
+                 data-full="assets/slide35_img2.png"
+                 data-title="男青年写生"
+                 data-meta="100cm × 80cm · 布面油画 · 2024">
+                <img src="assets/slide35_img2.png" alt="男青年写生" loading="lazy">
+                <div class="study-card-label">男青年写生 · 100×80cm</div>
+            </div>
+            <div class="study-card reveal reveal-delay-5" data-category="写生"
+                 data-full="assets/slide36_img2.png"
+                 data-title="男青年写生"
+                 data-meta="100cm × 80cm · 布面油画 · 2024">
+                <img src="assets/slide36_img2.png" alt="男青年写生" loading="lazy">
+                <div class="study-card-label">男青年写生 · 100×80cm</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     RESEARCH PLAN
+     ================================================================ -->
+<section class="section" id="research">
+    <div class="section-container">
+        <span class="section-label reveal">研究方向</span>
+        <h2 class="section-title reveal reveal-delay-1">研究方向与创作探索</h2>
+        <p class="section-lede reveal reveal-delay-1">研究课题：都市与身份 — 数字图像与青年文化融合下的海派油画创作</p>
+
+        <!-- Research directions -->
+        <div class="research-grid" style="margin-bottom:60px;">
+            <div class="research-card reveal reveal-delay-1">
+                <div class="research-card-num">01</div>
+                <h3>扎根地域：挖掘文化基因</h3>
+                <p>深入研究上海青年文化符号，提炼海派文化的包容性与摩登感。通过实地采风、文献研究与影像记录，积累丰富的地域视觉素材。</p>
+            </div>
+            <div class="research-card reveal reveal-delay-2">
+                <div class="research-card-num">02</div>
+                <h3>拥抱数字：融合视觉语言</h3>
+                <p>借鉴数字图像的光滑质感、高饱和度及故障艺术特征，利用数字工具进行草图构思与色彩实验，再通过油画技术实体化呈现。</p>
+            </div>
+            <div class="research-card reveal reveal-delay-3">
+                <div class="research-card-num">03</div>
+                <h3>跨界融合：构建独特范式</h3>
+                <p>打破传统边界，融合地域特质与数字特征，尝试材料、技术与观念创新，形成个人化的视觉符号和叙事方式。</p>
+            </div>
+        </div>
+
+        <!-- Artist Case Studies -->
+        <span class="section-label reveal" style="margin-top:40px;">案例分析</span>
+        <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(28px, 4vw, 44px);">艺术家案例研究</h2>
+        <div class="divider reveal reveal-delay-1"></div>
+
+        <div class="case-grid">
+            <div class="case-card reveal reveal-delay-1">
+                <div class="case-card-body">
+                    <h3>陈彧君</h3>
+                    <p style="font-size:13px;color:var(--ink-light);margin-bottom:12px;">「我，我们」个展 · 龙美术馆西岸馆</p>
+                    <p>融合数字摄影、拼贴与油画技术，在电脑中进行构图重组，用综合材料实体化呈现，打破传统绘画边界。</p>
+                    <div style="margin-top:12px;">
+                        <span class="case-tag">数字重构</span>
+                        <span class="case-tag">身份冲突</span>
+                        <span class="case-tag">视觉层次</span>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card reveal reveal-delay-2">
+                <div class="case-card-body">
+                    <h3>胡修乾</h3>
+                    <p style="font-size:13px;color:var(--ink-light);margin-bottom:12px;">《人类消失之后》系列</p>
+                    <p>运用传统油画媒介模仿数字图像质感，在传统与现代之间形成强烈视觉反差，引发对技术与人性关系的思考。</p>
+                    <div style="margin-top:12px;">
+                        <span class="case-tag">质感张力</span>
+                        <span class="case-tag">手工灵光</span>
+                        <span class="case-tag">观看方式</span>
+                    </div>
+                </div>
+            </div>
+            <div class="case-card reveal reveal-delay-3">
+                <div class="case-card-body">
+                    <h3>苏昱铭</h3>
+                    <p style="font-size:13px;color:var(--ink-light);margin-bottom:12px;">青年文化符号系列</p>
+                    <p>提取潮牌Logo、游戏手柄、动漫角色等亚文化符号，运用故障艺术、像素化等数字视觉语言进行油画转化。</p>
+                    <div style="margin-top:12px;">
+                        <span class="case-tag">青年文化</span>
+                        <span class="case-tag">数字语言</span>
+                        <span class="case-tag">身份表达</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expected Outcomes -->
+        <div class="outcomes-grid" style="margin-top:60px;">
+            <div class="outcomes-col reveal reveal-delay-1">
+                <span class="outcomes-tag">理论成果</span>
+                <div class="outcome-item">
+                    <h4>研究著述</h4>
+                    <p>完成系统性的研究著述，深入阐述创作理念与理论框架，为海派油画当代转型提供学术支撑。</p>
+                </div>
+                <div class="outcome-item">
+                    <h4>学术期刊论文</h4>
+                    <p>在国内外期刊发表3-5篇论文，分享阶段性研究成果，提升学术影响力。</p>
+                </div>
+            </div>
+            <div class="outcomes-col reveal reveal-delay-2">
+                <span class="outcomes-tag">实践成果</span>
+                <div class="outcome-item">
+                    <h4>系列油画作品</h4>
+                    <p>创作8-10幅体现研究主题的系列油画，形成完整的视觉表达体系。</p>
+                </div>
+                <div class="outcome-item">
+                    <h4>展览与荣誉</h4>
+                    <p>作品参加国内外重要展览20次以上，力争入选2029年全国美术作品展览。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     NATIONAL ART FUND HIGHLIGHT
+     ================================================================ -->
+<section class="section section-alt">
+    <div class="section-container">
+        <div class="about-grid">
+            <div class="about-text">
+                <span class="section-label reveal">重点项目</span>
+                <h2 class="section-title reveal reveal-delay-1">国家艺术基金</h2>
+                <div class="divider reveal reveal-delay-1"></div>
+                <p class="reveal reveal-delay-2" style="font-size:20px;font-weight:500;">"薪火传承"红色主题油画创作人才培训项目</p>
+                <p class="reveal reveal-delay-3" style="font-size:15px;color:var(--ink-light);margin-top:12px;">2025年录取为正式学员，参与国家级艺术人才培养计划，深入红色主题油画创作研究。</p>
+                <p class="reveal reveal-delay-4" style="font-size:14px;color:var(--ink-light);">涵盖理论研修、采风写生、创作实践等环节，与来自全国的优秀青年艺术家共同学习交流。</p>
+            </div>
+            <div class="about-visual reveal reveal-delay-2">
+                <img src="assets/slide6_img2.jpg" alt="国家艺术基金" style="max-width:100%;max-height:450px;object-fit:contain;border:1px solid var(--ink-faint);" loading="lazy">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ================================================================
+     FOOTER
+     ================================================================ -->
+<footer class="footer">
+    <div class="footer-bloom"></div>
+    <h2 class="reveal">联系与合作</h2>
+
+    <div class="footer-contact reveal reveal-delay-1">
+        <div class="contact-item">
+            <span class="contact-label">微信</span>
+            <span class="contact-value">sarinajsy</span>
+        </div>
+        <div class="contact-divider"></div>
+        <div class="contact-item">
+            <span class="contact-label">小红书</span>
+            <span class="contact-value">776429593</span>
+        </div>
+    </div>
+
+    <p class="reveal reveal-delay-2" style="font-size:15px;color:var(--ink-light);margin-top:28px;">贾商莹 · 油画创作与研究</p>
+    <p class="reveal reveal-delay-3" style="font-size:14px;color:var(--ink-light);opacity:0.7;">现居上海 · 上海大学美术学院硕士</p>
+</footer>
+
+<!-- ================================================================
+     LIGHTBOX OVERLAY
+     ================================================================ -->
+<div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="关闭">×</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="上一张">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="下一张">›</button>
+    <div class="lightbox-content">
+        <img src="" alt="" id="lightboxImg">
+        <div class="lightbox-info">
+            <div class="lb-title" id="lightboxTitle"></div>
+            <div class="lb-meta" id="lightboxMeta"></div>
+        </div>
+    </div>
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
+
+<script>
+/* ===========================================
+   NAVIGATION
+   =========================================== */
+const nav = document.getElementById('nav');
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+
+window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+/* ===========================================
+   PROGRESS BAR
+   =========================================== */
+const progressBar = document.getElementById('progressBar');
+window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = progress + '%';
+});
+
+/* ===========================================
+   BACK TO TOP
+   =========================================== */
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('visible', window.scrollY > 600);
+});
+backToTop.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+/* ===========================================
+   GALLERY FILTER
+   =========================================== */
+const filterTabs = document.querySelectorAll('.filter-tab');
+const galleryCards = document.querySelectorAll('#galleryGrid .gallery-card, #galleryGrid .study-card');
+
+filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        filterTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        const filter = tab.dataset.filter;
+
+        galleryCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+                card.classList.remove('hidden');
+            } else {
+                card.classList.add('hidden');
+            }
+        });
+    });
+});
+
+/* ===========================================
+   EXHIBITION TIMELINE — Click to expand photos
+   =========================================== */
+document.querySelectorAll('.timeline-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        // Don't toggle if clicking on the photo itself
+        if (e.target.closest('.timeline-photos img')) return;
+        // Close other expanded items
+        document.querySelectorAll('.timeline-item.expanded').forEach(other => {
+            if (other !== this) other.classList.remove('expanded');
+        });
+        this.classList.toggle('expanded');
+    });
+});
+
+/* ===========================================
+   SCROLL REVEAL (Intersection Observer)
+   =========================================== */
+const revealEls = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            // Don't unobserve filter-hidden cards — they may become visible later
+            if (!entry.target.classList.contains('gallery-card') && !entry.target.classList.contains('study-card')) {
+                observer.unobserve(entry.target);
+            }
+        }
+    });
+}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+revealEls.forEach(el => observer.observe(el));
+
+/* ===========================================
+   LIGHTBOX
+   =========================================== */
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightboxImg');
+const lightboxTitle = document.getElementById('lightboxTitle');
+const lightboxMeta = document.getElementById('lightboxMeta');
+const lightboxCounter = document.getElementById('lightboxCounter');
+const lightboxClose = document.getElementById('lightboxClose');
+const lightboxPrev = document.getElementById('lightboxPrev');
+const lightboxNext = document.getElementById('lightboxNext');
+
+let lbImages = [];
+let lbIndex = 0;
+
+function collectGalleryImages() {
+    lbImages = [];
+    document.querySelectorAll('#galleryGrid .gallery-card, #galleryGrid .study-card').forEach(card => {
+        const full = card.dataset.full;
+        if (full && !card.classList.contains('hidden')) {
+            lbImages.push({
+                src: full,
+                title: card.dataset.title || '',
+                meta: card.dataset.meta || '',
+                desc: card.dataset.desc || ''
+            });
+        }
+    });
+}
+
+function openLightbox(index) {
+    collectGalleryImages();
+    if (lbImages.length === 0) return;
+    lbIndex = Math.min(index, lbImages.length - 1);
+    updateLightbox();
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function updateLightbox() {
+    const item = lbImages[lbIndex];
+    lightboxImg.src = item.src;
+    lightboxImg.alt = item.title;
+    lightboxTitle.textContent = item.title;
+    lightboxMeta.textContent = item.meta + (item.desc ? ' — ' + item.desc : '');
+    lightboxCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`;
+}
+
+function closeLightbox() {
+    lightbox.classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function nextImage() {
+    if (lbImages.length === 0) return;
+    lbIndex = (lbIndex + 1) % lbImages.length;
+    updateLightbox();
+}
+
+function prevImage() {
+    if (lbImages.length === 0) return;
+    lbIndex = (lbIndex - 1 + lbImages.length) % lbImages.length;
+    updateLightbox();
+}
+
+// Click handlers — only bind to cards inside the unified gallery
+document.querySelectorAll('#galleryGrid .gallery-card, #galleryGrid .study-card').forEach(card => {
+    card.addEventListener('click', () => {
+        collectGalleryImages();
+        const full = card.dataset.full;
+        const idx = lbImages.findIndex(item => item.src === full);
+        openLightbox(idx >= 0 ? idx : 0);
+    });
+});
+
+lightboxClose.addEventListener('click', closeLightbox);
+lightboxPrev.addEventListener('click', prevImage);
+lightboxNext.addEventListener('click', nextImage);
+
+lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
+});
+
+document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    switch(e.key) {
+        case 'Escape': closeLightbox(); break;
+        case 'ArrowRight': nextImage(); break;
+        case 'ArrowLeft': prevImage(); break;
+    }
+});
+
+let touchStartX = 0;
+lightbox.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; });
+lightbox.addEventListener('touchend', (e) => {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(dx) > 60) {
+        dx < 0 ? nextImage() : prevImage();
+    }
+});
+</script>
+</body>
+</html>
