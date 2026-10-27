@@ -6,4 +6,4 @@ GitHub Pages 地址：
 
 https://bernardojorge403-wq.github.io/personal_art_collection/
 
-页面入口为 `index.html`，图片资源位于 `assets/opt/`。推送到 `main` 分支后，GitHub Actions 会自动构建并发布 Pages。
+页面入口为 `index.html`，图片资源位于 `assets/opt/`。推送到 `main` 分支后，GitHub Pages 会自动更新。
