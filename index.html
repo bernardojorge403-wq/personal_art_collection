@@ -3051,24 +3051,60 @@ if (canUseArtworkLoupe) {
     galleryCards.forEach(card => {
         const image = card.querySelector('img');
         if (!image) return;
+        const LOUPE_ZOOM = 2.4;
         const loupe = document.createElement('div');
         loupe.className = 'artwork-loupe';
         loupe.setAttribute('aria-hidden', 'true');
         card.appendChild(loupe);
 
+        function getLoupeGeometry() {
+            const rect = card.getBoundingClientRect();
+            const frame = image.getBoundingClientRect();
+            const frameWidth = frame.width || rect.width;
+            const frameHeight = frame.height || rect.height;
+            const naturalWidth = image.naturalWidth || Number(image.getAttribute('width')) || rect.width;
+            const naturalHeight = image.naturalHeight || Number(image.getAttribute('height')) || rect.height;
+            const imageRatio = naturalWidth / naturalHeight;
+            const frameRatio = frameWidth / frameHeight;
+            let contentWidth;
+            let contentHeight;
+
+            if (imageRatio > frameRatio) {
+                contentWidth = frameWidth;
+                contentHeight = frameWidth / imageRatio;
+            } else {
+                contentHeight = frameHeight;
+                contentWidth = frameHeight * imageRatio;
+            }
+
+            return {
+                rect,
+                contentWidth,
+                contentHeight,
+                contentLeft: frame.left - rect.left + (frameWidth - contentWidth) / 2,
+                contentTop: frame.top - rect.top + (frameHeight - contentHeight) / 2
+            };
+        }
+
         card.addEventListener('pointerenter', () => {
             const source = image.currentSrc || image.src;
             if (!source) return;
+            const geometry = getLoupeGeometry();
             loupe.style.backgroundImage = `url("${source}")`;
-            loupe.style.backgroundSize = '220% auto';
+            loupe.style.backgroundSize = `${geometry.contentWidth * LOUPE_ZOOM}px ${geometry.contentHeight * LOUPE_ZOOM}px`;
         });
         card.addEventListener('pointermove', e => {
-            const rect = card.getBoundingClientRect();
+            const geometry = getLoupeGeometry();
+            const { rect } = geometry;
             const x = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
             const y = Math.max(0, Math.min(rect.height, e.clientY - rect.top));
+            const imageX = Math.max(0, Math.min(geometry.contentWidth, x - geometry.contentLeft));
+            const imageY = Math.max(0, Math.min(geometry.contentHeight, y - geometry.contentTop));
+            const loupeCenter = loupe.offsetWidth / 2;
+
             loupe.style.left = `${x}px`;
             loupe.style.top = `${y}px`;
-            loupe.style.backgroundPosition = `${(x / rect.width) * 100}% ${(y / rect.height) * 100}%`;
+            loupe.style.backgroundPosition = `${loupeCenter - imageX * LOUPE_ZOOM}px ${loupeCenter - imageY * LOUPE_ZOOM}px`;
             loupe.classList.add('visible');
         });
         card.addEventListener('pointerleave', () => loupe.classList.remove('visible'));
