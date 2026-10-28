@@ -172,6 +172,26 @@ body {
 .nav-links a:hover::after { width: 100%; }
 .nav-links a[aria-current="location"] { color: var(--ink); }
 .nav-links a[aria-current="location"]::after { width: 100%; }
+.nav-liked-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+}
+.liked-count {
+    display: inline-grid;
+    min-width: 19px;
+    height: 19px;
+    padding: 0 5px;
+    place-items: center;
+    border-radius: 999px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0;
+}
 .nav-toggle {
     display: none;
     width: 44px;
@@ -1659,6 +1679,210 @@ body::before {
     #galleryGrid > .study-card { flex-basis: 84vw; }
 }
 
+/* ===========================================
+   LIKES, SHARING & WORK LINKS
+   =========================================== */
+.work-open {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: transparent;
+    color: transparent;
+    cursor: pointer;
+}
+.work-open:focus-visible {
+    outline: 3px solid var(--bud-soft);
+    outline-offset: -6px;
+}
+.work-card-actions {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 12;
+    display: flex;
+    gap: 8px;
+}
+.work-control {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(255, 255, 255, 0.52);
+    border-radius: 50%;
+    background: rgba(13, 18, 32, 0.58);
+    color: #fff;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 5px 18px rgba(8, 12, 22, 0.16);
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+.work-control:hover {
+    border-color: #fff;
+    background: rgba(13, 18, 32, 0.86);
+    transform: translateY(-2px);
+}
+.work-control:focus-visible {
+    outline-color: var(--bud-soft);
+}
+.work-control svg {
+    width: 19px;
+    height: 19px;
+    pointer-events: none;
+}
+.work-control[aria-pressed="true"] {
+    border-color: rgba(255, 222, 211, 0.9);
+    background: rgba(161, 66, 45, 0.92);
+    color: #fff4ee;
+}
+.work-control.like-pop svg {
+    animation: like-pop 0.42s var(--ease-out-expo);
+}
+@keyframes like-pop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.34) rotate(-7deg); }
+    72% { transform: scale(0.92) rotate(3deg); }
+    100% { transform: scale(1); }
+}
+.filter-tab .liked-count {
+    margin-left: 5px;
+    background: var(--ink);
+    color: var(--paper);
+}
+.filter-tab.active .liked-count {
+    background: var(--ink);
+    color: var(--paper);
+}
+.liked-empty {
+    width: calc(100% - 40px);
+    max-width: 760px;
+    margin: 20px auto 34px;
+    padding: clamp(32px, 5vw, 58px);
+    border: 1px solid var(--ink-faint);
+    background:
+        linear-gradient(135deg, rgba(155, 191, 74, 0.1), transparent 58%),
+        rgba(233, 229, 219, 0.72);
+    text-align: center;
+}
+.liked-empty-mark {
+    display: block;
+    margin-bottom: 12px;
+    color: var(--ember-text);
+    font-family: var(--font-display);
+    font-size: 44px;
+    line-height: 1;
+}
+.liked-empty h3 {
+    margin-bottom: 8px;
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 34px);
+    font-weight: 500;
+}
+.liked-empty p {
+    color: var(--ink-light);
+    font-size: 14px;
+}
+.liked-empty button {
+    margin-top: 22px;
+    padding: 10px 22px;
+    border: 1px solid var(--ink);
+    background: transparent;
+    color: var(--ink);
+    font-family: var(--font-body);
+    cursor: pointer;
+}
+.liked-empty button:hover {
+    background: var(--ink);
+    color: var(--paper);
+}
+.lightbox-social {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 24px;
+}
+.lightbox-social button {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 15px;
+    border: 1px solid rgba(244, 240, 232, 0.3);
+    background: transparent;
+    color: #f4f0e8;
+    font-family: var(--font-body);
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease;
+}
+.lightbox-social button:hover,
+.lightbox-social button:focus-visible {
+    border-color: var(--bud-soft);
+    background: rgba(244, 240, 232, 0.08);
+}
+.lightbox-social button[aria-pressed="true"] {
+    border-color: rgba(255, 222, 211, 0.8);
+    background: rgba(161, 66, 45, 0.56);
+    color: #fff4ee;
+}
+.lightbox-social svg {
+    width: 17px;
+    height: 17px;
+}
+.lightbox-social .like-pop svg {
+    animation: like-pop 0.42s var(--ease-out-expo);
+}
+.site-toast {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    z-index: 10001;
+    max-width: min(88vw, 520px);
+    padding: 12px 20px;
+    border: 1px solid rgba(233, 229, 219, 0.22);
+    background: rgba(16, 22, 42, 0.94);
+    color: #f4f0e8;
+    font-size: 13px;
+    line-height: 1.5;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translate(-50%, 14px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    box-shadow: 0 14px 40px rgba(8, 12, 22, 0.24);
+}
+.site-toast.visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+@media (max-width: 768px) {
+    .nav-liked-link { justify-content: space-between; width: 100%; }
+    .work-card-actions {
+        top: 10px;
+        right: 10px;
+        gap: 6px;
+    }
+    .liked-empty { width: calc(100% - 32px); margin-top: 10px; }
+    .lightbox-social { margin-top: 16px; }
+    .lightbox-social button { flex: 1 1 auto; justify-content: center; }
+    .site-toast { bottom: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .work-control,
+    .site-toast {
+        transition: none;
+    }
+    .work-control.like-pop svg,
+    .lightbox-social .like-pop svg {
+        animation: none;
+    }
+}
+
 @media print {
     @page { margin: 12mm; }
     html, body {
@@ -1675,7 +1899,11 @@ body::before {
     .lightbox,
     .skip-link,
     .hero-actions,
-    .copy-button {
+    .copy-button,
+    .work-open,
+    .work-card-actions,
+    .liked-empty,
+    .site-toast {
         display: none !important;
     }
     .reveal {
@@ -1753,6 +1981,7 @@ body::before {
         <li><a href="#about">关于</a></li>
         <li><a href="#exhibitions">展览</a></li>
         <li><a href="#gallery">作品</a></li>
+        <li><a href="#gallery" class="nav-liked-link" id="showLikedWorks" data-gallery-action="liked">我的喜欢 <span class="liked-count" id="likedNavCount">0</span></a></li>
         <li><a href="#research">研究</a></li>
         <li><a href="#contact">联系</a></li>
     </ul>
@@ -2028,6 +2257,7 @@ body::before {
             <button class="filter-tab" type="button" data-filter="油画" aria-pressed="false" aria-controls="galleryGrid">油画创作</button>
             <button class="filter-tab" type="button" data-filter="素描" aria-pressed="false" aria-controls="galleryGrid">素描</button>
             <button class="filter-tab" type="button" data-filter="写生" aria-pressed="false" aria-controls="galleryGrid">写生</button>
+            <button class="filter-tab" type="button" data-filter="liked" aria-pressed="false" aria-controls="galleryGrid">我的喜欢 <span class="liked-count" id="likedFilterCount">0</span></button>
         </div>
         <p class="sr-only" id="galleryStatus" aria-live="polite"></p>
         <div class="gallery-rail-ui">
@@ -2036,6 +2266,13 @@ body::before {
                 <button type="button" id="galleryRailPrev" aria-label="浏览上一组作品">←</button>
                 <button type="button" id="galleryRailNext" aria-label="浏览下一组作品">→</button>
             </div>
+        </div>
+
+        <div class="liked-empty" id="likedEmpty" hidden>
+            <span class="liked-empty-mark" aria-hidden="true">♡</span>
+            <h3>还没有喜欢的作品</h3>
+            <p>点作品右上角的心形，把它留在此刻。喜欢会保存在当前浏览器中。</p>
+            <button type="button" id="likedEmptyBrowse">浏览全部作品</button>
         </div>
 
         <div class="gallery-grid" id="galleryGrid">
@@ -2356,6 +2593,23 @@ body::before {
             <h2 class="lb-title" id="lightboxTitle"></h2>
             <div class="lb-meta" id="lightboxMeta"></div>
             <div class="lb-desc" id="lightboxDesc"></div>
+            <div class="lightbox-social" aria-label="作品互动">
+                <button type="button" id="lightboxLike" data-like-work aria-pressed="false">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+                    </svg>
+                    <span data-like-label>喜欢</span>
+                </button>
+                <button type="button" id="lightboxShare">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <circle cx="18" cy="5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                        <circle cx="6" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                        <circle cx="18" cy="19" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+                        <path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+                    </svg>
+                    <span>分享作品</span>
+                </button>
+            </div>
             <div class="lightbox-tools" aria-label="作品缩放工具">
                 <button type="button" id="lightboxZoomOut" aria-label="缩小作品">−</button>
                 <button type="button" id="lightboxZoomReset" aria-label="恢复作品原始大小">100%</button>
@@ -2366,6 +2620,8 @@ body::before {
     </div>
     <div class="lightbox-counter" id="lightboxCounter" aria-live="polite"></div>
 </div>
+
+<div class="site-toast" id="siteToast" role="status" aria-live="polite" aria-atomic="true"></div>
 
 <script>
 /* ===========================================
@@ -2485,6 +2741,7 @@ document.querySelectorAll('.copy-button').forEach(button => {
    ACTIVE SECTION IN NAVIGATION
    =========================================== */
 const sectionLinks = [...document.querySelectorAll('.nav-links a')]
+    .filter(link => !link.dataset.galleryAction)
     .map(link => ({ link, target: document.querySelector(link.getAttribute('href')) }))
     .filter(item => item.target);
 
@@ -2524,33 +2781,105 @@ updateActiveSection();
    GALLERY FILTER
    =========================================== */
 const filterTabs = document.querySelectorAll('.filter-tab');
-const galleryCards = document.querySelectorAll('#galleryGrid .gallery-card, #galleryGrid .study-card');
+const galleryCards = [...document.querySelectorAll('#galleryGrid .gallery-card, #galleryGrid .study-card')];
 const galleryStatus = document.getElementById('galleryStatus');
-
-filterTabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        filterTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        filterTabs.forEach(t => t.setAttribute('aria-pressed', String(t === tab)));
-        const filter = tab.dataset.filter;
-
-        let visibleCount = 0;
-        galleryCards.forEach(card => {
-            if (filter === 'all' || card.dataset.category === filter) {
-                card.classList.remove('hidden');
-                visibleCount += 1;
-            } else {
-                card.classList.add('hidden');
-            }
-        });
-        galleryStatus.textContent = `已显示 ${visibleCount} 件作品`;
-        document.getElementById('galleryGrid').scrollTo({ left: 0, behavior: 'smooth' });
-    });
-});
-
 const galleryRail = document.getElementById('galleryGrid');
 const galleryRailPrev = document.getElementById('galleryRailPrev');
 const galleryRailNext = document.getElementById('galleryRailNext');
+const gallerySection = document.getElementById('gallery');
+const likedEmpty = document.getElementById('likedEmpty');
+const likedEmptyBrowse = document.getElementById('likedEmptyBrowse');
+const showLikedWorks = document.getElementById('showLikedWorks');
+const likedCountEls = document.querySelectorAll('#likedNavCount, #likedFilterCount');
+const LIKES_STORAGE_KEY = 'jiashangying-liked-works-v1';
+const PUBLIC_SITE_URL = 'https://bernardojorge403-wq.github.io/personal_art_collection/';
+let activeGalleryFilter = 'all';
+
+function getWorkId(card) {
+    if (!card.dataset.workId) {
+        const fullPath = card.dataset.full || '';
+        const filename = fullPath.split('/').pop() || card.dataset.title || 'work';
+        card.dataset.workId = filename
+            .replace(/_l\.[a-z0-9]+$/i, '')
+            .replace(/[^a-z0-9_-]+/gi, '-')
+            .toLowerCase();
+    }
+    return card.dataset.workId;
+}
+
+function readLikedWorks() {
+    try {
+        const stored = JSON.parse(localStorage.getItem(LIKES_STORAGE_KEY) || '[]');
+        return new Set(Array.isArray(stored) ? stored.filter(id => typeof id === 'string') : []);
+    } catch (error) {
+        return new Set();
+    }
+}
+
+let likedWorkIds = readLikedWorks();
+
+function persistLikedWorks() {
+    try {
+        localStorage.setItem(LIKES_STORAGE_KEY, JSON.stringify([...likedWorkIds]));
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+function syncLikedCount() {
+    likedCountEls.forEach(element => {
+        element.textContent = String(likedWorkIds.size);
+    });
+    showLikedWorks.setAttribute('aria-label', `我的喜欢，共 ${likedWorkIds.size} 件作品`);
+}
+
+function isWorkLiked(card) {
+    return likedWorkIds.has(getWorkId(card));
+}
+
+function workMatchesFilter(card, filter) {
+    if (filter === 'liked') return isWorkLiked(card);
+    return filter === 'all' || card.dataset.category === filter;
+}
+
+function setGalleryFilter(filter, { scroll = false } = {}) {
+    activeGalleryFilter = filter;
+    filterTabs.forEach(tab => {
+        const isActive = tab.dataset.filter === filter;
+        tab.classList.toggle('active', isActive);
+        tab.setAttribute('aria-pressed', String(isActive));
+    });
+
+    let visibleCount = 0;
+    galleryCards.forEach(card => {
+        const isVisible = workMatchesFilter(card, filter);
+        card.classList.toggle('hidden', !isVisible);
+        if (isVisible) visibleCount += 1;
+    });
+
+    likedEmpty.hidden = !(filter === 'liked' && visibleCount === 0);
+    galleryStatus.textContent = filter === 'liked' && visibleCount === 0
+        ? '还没有喜欢的作品'
+        : `已显示 ${visibleCount} 件作品`;
+    if (scroll) galleryRail.scrollTo({ left: 0, behavior: 'smooth' });
+}
+
+filterTabs.forEach(tab => {
+    tab.addEventListener('click', () => setGalleryFilter(tab.dataset.filter, { scroll: true }));
+});
+
+showLikedWorks.addEventListener('click', event => {
+    event.preventDefault();
+    setGalleryFilter('liked', { scroll: true });
+    setNavOpen(false);
+    gallerySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+likedEmptyBrowse.addEventListener('click', () => {
+    setGalleryFilter('all', { scroll: true });
+    filterTabs[0].focus();
+});
 
 function moveGalleryRail(direction) {
     const firstCard = galleryRail.querySelector('.gallery-card:not(.hidden), .study-card:not(.hidden)');
@@ -2561,14 +2890,161 @@ function moveGalleryRail(direction) {
 galleryRailPrev.addEventListener('click', () => moveGalleryRail(-1));
 galleryRailNext.addEventListener('click', () => moveGalleryRail(1));
 
+const heartIcon = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    </svg>`;
+const shareIcon = `
+    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <circle cx="18" cy="5" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        <circle cx="6" cy="12" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        <circle cx="18" cy="19" r="2.4" fill="none" stroke="currentColor" stroke-width="1.7"/>
+        <path d="m8.2 10.8 7.6-4.5M8.2 13.2l7.6 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+    </svg>`;
+
+function getWorkShareUrl(card) {
+    const isLocal = location.protocol === 'file:'
+        || ['localhost', '127.0.0.1'].includes(location.hostname);
+    const url = isLocal ? new URL(PUBLIC_SITE_URL) : new URL(location.href);
+    url.search = '';
+    url.hash = '';
+    url.searchParams.set('work', getWorkId(card));
+    return url.toString();
+}
+
+async function shareWork(card) {
+    const title = card.dataset.title || card.querySelector('img')?.alt || '作品';
+    const shareUrl = getWorkShareUrl(card);
+
+    if (navigator.share) {
+        try {
+            await navigator.share({
+                title: `贾商莹｜${title}`,
+                text: `与你分享贾商莹的作品《${title}》`,
+                url: shareUrl
+            });
+            showToast('作品分享已打开');
+            return;
+        } catch (error) {
+            if (error.name === 'AbortError') return;
+        }
+    }
+
+    try {
+        await copyToClipboard(shareUrl);
+        showToast('作品链接已复制');
+    } catch (error) {
+        showToast('分享失败，请复制浏览器地址');
+    }
+}
+
+function syncLikeButtons(card) {
+    const workId = getWorkId(card);
+    const liked = likedWorkIds.has(workId);
+    const title = card.dataset.title || '作品';
+    document.querySelectorAll('[data-like-work]').forEach(button => {
+        if (button.dataset.workId !== workId) return;
+        button.setAttribute('aria-pressed', String(liked));
+        button.setAttribute('aria-label', liked ? `取消喜欢：${title}` : `喜欢作品：${title}`);
+        button.title = liked ? '取消喜欢' : '喜欢';
+        const label = button.querySelector('[data-like-label]');
+        if (label) label.textContent = liked ? '已喜欢' : '喜欢';
+    });
+}
+
+function toggleLikedWork(card, sourceButton = null) {
+    const workId = getWorkId(card);
+    const willLike = !likedWorkIds.has(workId);
+    const title = card.dataset.title || '作品';
+    if (willLike) likedWorkIds.add(workId);
+    else likedWorkIds.delete(workId);
+
+    const persisted = persistLikedWorks();
+    syncLikedCount();
+    syncLikeButtons(card);
+
+    if (sourceButton) {
+        sourceButton.classList.remove('like-pop');
+        void sourceButton.offsetWidth;
+        sourceButton.classList.add('like-pop');
+        window.setTimeout(() => sourceButton.classList.remove('like-pop'), 460);
+    }
+
+    if (activeGalleryFilter === 'liked') {
+        const lightboxWasOpen = lightbox.classList.contains('open');
+        const currentWorkId = lightboxWasOpen ? lbImages[lbIndex]?.id : null;
+        setGalleryFilter('liked');
+        if (lightboxWasOpen) {
+            collectGalleryImages();
+            const nextIndex = lbImages.findIndex(item => item.id === currentWorkId);
+            if (nextIndex >= 0) {
+                lbIndex = nextIndex;
+                updateLightbox();
+            } else if (lbImages.length > 0) {
+                lbIndex = Math.min(lbIndex, lbImages.length - 1);
+                updateLightbox();
+            } else {
+                closeLightbox();
+            }
+        }
+    }
+
+    if (!persisted) {
+        showToast('喜欢已更新，但当前浏览器无法长期保存');
+    } else {
+        showToast(willLike ? `已加入我的喜欢 · ${title}` : `已取消喜欢 · ${title}`);
+    }
+}
+
+function openCard(card) {
+    collectGalleryImages();
+    const workId = getWorkId(card);
+    const index = lbImages.findIndex(item => item.id === workId);
+    openLightbox(index >= 0 ? index : 0);
+}
+
 galleryCards.forEach(card => {
     const title = card.dataset.title || card.querySelector('img')?.alt || '作品';
     const meta = card.dataset.meta || '';
-    card.setAttribute('role', 'button');
-    card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-haspopup', 'dialog');
-    card.setAttribute('aria-label', `查看作品：${title}${meta ? `，${meta}` : ''}`);
+    const workId = getWorkId(card);
+    card.removeAttribute('role');
+    card.removeAttribute('tabindex');
+    card.removeAttribute('aria-haspopup');
+    card.removeAttribute('aria-label');
+
+    const openButton = document.createElement('button');
+    openButton.type = 'button';
+    openButton.className = 'work-open';
+    openButton.setAttribute('aria-label', `查看作品：${title}${meta ? `，${meta}` : ''}`);
+    openButton.setAttribute('aria-haspopup', 'dialog');
+    openButton.addEventListener('click', () => openCard(card));
+
+    const actions = document.createElement('div');
+    actions.className = 'work-card-actions';
+    actions.setAttribute('role', 'group');
+    actions.setAttribute('aria-label', `${title}互动`);
+
+    const likeButton = document.createElement('button');
+    likeButton.type = 'button';
+    likeButton.className = 'work-control';
+    likeButton.dataset.likeWork = '';
+    likeButton.dataset.workId = workId;
+    likeButton.innerHTML = heartIcon;
+    likeButton.addEventListener('click', () => toggleLikedWork(card, likeButton));
+
+    const shareButton = document.createElement('button');
+    shareButton.type = 'button';
+    shareButton.className = 'work-control';
+    shareButton.setAttribute('aria-label', `分享作品：${title}`);
+    shareButton.title = '分享作品';
+    shareButton.innerHTML = shareIcon;
+    shareButton.addEventListener('click', () => shareWork(card));
+
+    actions.append(likeButton, shareButton);
+    card.append(openButton, actions);
+    syncLikeButtons(card);
 });
+syncLikedCount();
 
 const canUseArtworkLoupe = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 if (canUseArtworkLoupe) {
@@ -2674,8 +3150,11 @@ const lightboxZoomOut = document.getElementById('lightboxZoomOut');
 const lightboxZoomIn = document.getElementById('lightboxZoomIn');
 const lightboxZoomReset = document.getElementById('lightboxZoomReset');
 const lightboxZoomStatus = document.getElementById('lightboxZoomStatus');
+const lightboxLike = document.getElementById('lightboxLike');
+const lightboxShare = document.getElementById('lightboxShare');
+const siteToast = document.getElementById('siteToast');
 const pageRegions = [...document.body.children].filter(
-    element => element !== lightbox && element.tagName !== 'SCRIPT'
+    element => element !== lightbox && element !== siteToast && element.tagName !== 'SCRIPT'
 );
 
 let lbImages = [];
@@ -2688,6 +3167,27 @@ let lbY = 0;
 let isDraggingArtwork = false;
 let dragStartX = 0;
 let dragStartY = 0;
+let toastTimer = null;
+
+function showToast(message) {
+    window.clearTimeout(toastTimer);
+    siteToast.textContent = message;
+    siteToast.classList.add('visible');
+    toastTimer = window.setTimeout(() => {
+        siteToast.classList.remove('visible');
+    }, 2400);
+}
+
+function setWorkInUrl(card) {
+    const url = new URL(window.location.href);
+    if (card) url.searchParams.set('work', getWorkId(card));
+    else url.searchParams.delete('work');
+    try {
+        window.history.replaceState(null, '', url.toString());
+    } catch (error) {
+        // Some local-file previews do not allow history updates.
+    }
+}
 
 function collectGalleryImages() {
     lbImages = [];
@@ -2696,9 +3196,11 @@ function collectGalleryImages() {
         if (full && !card.classList.contains('hidden')) {
             lbImages.push({
                 src: full,
+                id: getWorkId(card),
                 title: card.dataset.title || '',
                 meta: card.dataset.meta || '',
-                desc: card.dataset.desc || ''
+                desc: card.dataset.desc || '',
+                card
             });
         }
     });
@@ -2726,6 +3228,12 @@ function updateLightbox() {
     lightboxMeta.textContent = item.meta;
     lightboxDesc.textContent = item.desc;
     lightboxCounter.textContent = `${lbIndex + 1} / ${lbImages.length}`;
+    lightboxLike.dataset.workId = item.id;
+    lightboxLike.setAttribute('aria-label', isWorkLiked(item.card) ? `取消喜欢：${item.title}` : `喜欢作品：${item.title}`);
+    lightboxLike.setAttribute('aria-pressed', String(isWorkLiked(item.card)));
+    lightboxLike.querySelector('[data-like-label]').textContent = isWorkLiked(item.card) ? '已喜欢' : '喜欢';
+    lightboxShare.setAttribute('aria-label', `分享作品：${item.title}`);
+    setWorkInUrl(item.card);
     resetImageZoom();
     preloadAdjacentImages();
 }
@@ -2775,6 +3283,7 @@ function closeLightbox() {
     lightbox.setAttribute('aria-hidden', 'true');
     pageRegions.forEach(region => { region.inert = false; });
     document.body.style.overflow = '';
+    setWorkInUrl(null);
     if (lastLightboxTrigger && typeof lastLightboxTrigger.focus === 'function') {
         lastLightboxTrigger.focus();
     }
@@ -2792,24 +3301,18 @@ function prevImage() {
     updateLightbox();
 }
 
-// Click handlers — only bind to cards inside the unified gallery
-document.querySelectorAll('#galleryGrid .gallery-card, #galleryGrid .study-card').forEach(card => {
-    card.addEventListener('click', () => {
-        collectGalleryImages();
-        const full = card.dataset.full;
-        const idx = lbImages.findIndex(item => item.src === full);
-        openLightbox(idx >= 0 ? idx : 0);
-    });
-    card.addEventListener('keydown', e => {
-        if (e.key !== 'Enter' && e.key !== ' ') return;
-        e.preventDefault();
-        card.click();
-    });
-});
-
 lightboxClose.addEventListener('click', closeLightbox);
 lightboxPrev.addEventListener('click', prevImage);
 lightboxNext.addEventListener('click', nextImage);
+lightboxLike.addEventListener('click', () => {
+    const item = lbImages[lbIndex];
+    if (!item) return;
+    toggleLikedWork(item.card, lightboxLike);
+});
+lightboxShare.addEventListener('click', () => {
+    const item = lbImages[lbIndex];
+    if (item) shareWork(item.card);
+});
 lightboxZoomOut.addEventListener('click', () => setImageZoom(lbScale - 0.5));
 lightboxZoomIn.addEventListener('click', () => setImageZoom(lbScale + 0.5));
 lightboxZoomReset.addEventListener('click', resetImageZoom);
@@ -2887,6 +3390,24 @@ lightbox.addEventListener('touchend', (e) => {
         dx < 0 ? nextImage() : prevImage();
     }
 });
+
+/* ===========================================
+   SHARED WORK DEEP LINK
+   =========================================== */
+function openWorkFromUrl() {
+    const requestedWorkId = new URLSearchParams(window.location.search).get('work');
+    if (!requestedWorkId) return;
+    const card = galleryCards.find(item => getWorkId(item) === requestedWorkId);
+    if (!card) return;
+
+    setGalleryFilter('all');
+    window.setTimeout(() => {
+        card.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'center' });
+        window.setTimeout(() => openCard(card), 420);
+    }, 120);
+}
+
+openWorkFromUrl();
 </script>
 </body>
 </html>
